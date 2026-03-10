@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>History</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Medicine History</h2>
+
+<div class="nav">
+<a href="/">Back to Dashboard</a>
+</div>
+
+<table>
+
+<tr>
+<th>Date</th>
+<th>Medicine</th>
+<th>Time</th>
+<th>Status</th>
+</tr>
+
+{% for h in data %}
+
+<tr>
+<td>{{h.date}}</td>
+<td>{{h.medicine_name}}</td>
+<td>{{h.time}}</td>
+<td>{{h.status}}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

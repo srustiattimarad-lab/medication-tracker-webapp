@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Medicine</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Edit Medicine</h2>
+
+<form method="POST">
+
+<input name="name" value="{{med.medicine_name}}">
+
+<input name="dosage" value="{{med.dosage}}">
+
+<input type="time" name="time" value="{{med.time}}">
+
+<button class="addbtn">Update Medicine</button>
+
+</form>
+
+<div class="nav">
+<a href="/">Back</a>
+</div>
+
+</div>
+
+</body>
+</html>

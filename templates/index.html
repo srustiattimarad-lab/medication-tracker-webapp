@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Medication Tracker</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Today's Medicines</h2>
+
+<div class="nav">
+<a href="/history">History</a> |
+<a href="/logout">Logout</a>
+</div>
+
+<hr>
+
+<form method="POST" action="/add">
+
+<div class="formgrid">
+
+<input name="name" placeholder="Medicine name">
+
+<input name="dosage" placeholder="Dosage">
+
+<input class="timeinput" type="time" name="time">
+
+</div>
+
+<button class="addbtn">Add Medicine</button>
+
+</form>
+
+<hr>
+
+{% for m in meds %}
+
+<div class="card">
+
+<b>{{m.name}}</b> ({{m.dosage}})
+
+<br>
+
+Time: {{m.time}}
+
+<br><br>
+
+Status:
+
+{% if m.status == "Pending" %}
+
+<span class="badge pending">Pending</span>
+
+<a class="markbtn" href="/taken/{{m.id}}">Mark Taken</a>
+
+{% elif m.status == "Taken" %}
+
+<span class="badge taken">Taken</span>
+
+{% else %}
+
+<span class="badge missed">Missed</span>
+
+{% endif %}
+
+<br><br>
+
+<a class="editbtn" href="/edit/{{m.id}}">Edit</a>
+<a class="deletebtn" href="/delete/{{m.id}}">Delete</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>
