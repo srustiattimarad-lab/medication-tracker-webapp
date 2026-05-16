@@ -1,81 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Medication Tracker</title>
-<link rel="stylesheet" href="/static/style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Medication Tracker</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/static/manifest.json">
+
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-<h2>Today's Medicines</h2>
+        <h2>Today's Medicines</h2>
 
-<div class="nav">
-<a href="/history">History</a> |
-<a href="/logout">Logout</a>
-</div>
+        <div class="nav">
+            <a href="/history">History</a> |
+            <a href="/logout">Logout</a>
+        </div>
 
-<hr>
+        <hr>
 
-<form method="POST" action="/add">
+        <!-- ADD MEDICINE FORM -->
+        <form method="POST" action="/add">
 
-<div class="formgrid">
+            <div class="formgrid">
 
-<input name="name" placeholder="Medicine name">
+                <input type="text" name="name" placeholder="Medicine name" required>
 
-<input name="dosage" placeholder="Dosage">
+                <input type="text" name="dosage" placeholder="Dosage" required>
 
-<input class="timeinput" type="time" name="time">
+                <input class="timeinput" type="time" name="time" required>
 
-</div>
+            </div>
 
-<button class="addbtn">Add Medicine</button>
+            <button class="addbtn" type="submit">
+                Add Medicine
+            </button>
 
-</form>
+        </form>
 
-<hr>
+        <hr>
 
-{% for m in meds %}
+        <!-- MEDICINE CARDS -->
 
-<div class="card">
+        {% for m in meds %}
 
-<b>{{m.name}}</b> ({{m.dosage}})
+        <div class="card medicine-card">
 
-<br>
+            <b class="med-name">
+                {{m.name}}
+            </b>
 
-Time: {{m.time}}
+            ({{m.dosage}})
 
-<br><br>
+            <br>
 
-Status:
+            Time:
+            <span class="med-time">
+                {{m.time}}
+            </span>
 
-{% if m.status == "Pending" %}
+            <br><br>
 
-<span class="badge pending">Pending</span>
+            Status:
 
-<a class="markbtn" href="/taken/{{m.id}}">Mark Taken</a>
+            {% if m.status == "Pending" %}
 
-{% elif m.status == "Taken" %}
+            <span class="badge pending status">
+                Pending
+            </span>
 
-<span class="badge taken">Taken</span>
+            <a class="markbtn" href="/taken/{{m.id}}">
+                Mark Taken
+            </a>
 
-{% else %}
+            {% elif m.status == "Taken" %}
 
-<span class="badge missed">Missed</span>
+            <span class="badge taken status">
+                Taken
+            </span>
 
-{% endif %}
+            {% else %}
 
-<br><br>
+            <span class="badge missed status">
+                Missed
+            </span>
 
-<a class="editbtn" href="/edit/{{m.id}}">Edit</a>
-<a class="deletebtn" href="/delete/{{m.id}}">Delete</a>
+            {% endif %}
 
-</div>
+            <br><br>
 
-{% endfor %}
+            <a class="editbtn" href="/edit/{{m.id}}">
+                Edit
+            </a>
 
-</div>
+            <a class="deletebtn" href="/delete/{{m.id}}">
+                Delete
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
+
 </html>
