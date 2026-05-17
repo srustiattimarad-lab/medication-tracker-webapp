@@ -1,0 +1,16 @@
+{
+    "name": "Medication Tracker",
+    "short_name": "MedTracker",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#38bdf8",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "https://cdn-icons-png.flaticon.com/512/2966/2966489.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}

@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Edit Medicine</title>
-<link rel="stylesheet" href="/static/style.css">
+    <title>Edit Medicine</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-<h2>Edit Medicine</h2>
+        <h2>Edit Medicine</h2>
 
-<form method="POST">
+        <form method="POST">
 
-<input name="name" value="{{med.medicine_name}}">
+            <input name="name" value="{{med.medicine_name}}">
 
-<input name="dosage" value="{{med.dosage}}">
+            <input name="dosage" value="{{med.dosage}}">
 
-<input type="time" name="time" value="{{med.time}}">
+            <input type="time" name="time" value="{{med.time}}">
 
-<button class="addbtn">Update Medicine</button>
+            <button class="addbtn">Update Medicine</button>
 
-</form>
+        </form>
 
-<div class="nav">
-<a href="/">Back</a>
-</div>
+        <div class="nav">
+            <a href="/">Back</a>
+        </div>
 
-</div>
+    </div>
 
 </body>
+
 </html>
